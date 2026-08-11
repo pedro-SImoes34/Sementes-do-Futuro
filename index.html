@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sementes do Futuro</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- estilização do mapa (leaflet)-->
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- interação do mapa (leaflet)-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
 </head>
+
 <body>
     <div class="container">
-        <header></header>
-        <div class="main">
-            <aside class="side-bar"></aside>
-            <div id="map"></div>
-        </div>
-        <section></section>
+        <section class="conteudo">
+            <aside class="side-bar">
+                <img src="assets/img-exemplo.png" alt="logo" class="logo">
+                <div class="button-list">
+                    <button class="btn-filtro">Todos os pontos</button>
+                    <button class="btn-filtro">Coleta de óleo</button>
+                    <button class="btn-filtro">Reciclagem</button>
+                    <button class="btn-filtro">Eletrônicos</button>
+                    <button class="btn-filtro">Hortas comunitárias</button>
+                    <button class="btn-filtro">Projetos sustentáveis</button>
+                    <button class="btn-filtro">Arborização</button>
+                    <button class="btn-filtro">Banco de sementes</button>
+                </div>
+            </aside>
+            <div class="conteudo-direita">
+                <header></header>
+                <main class="main">
+                    <div id="map"></div>
+                </main>
+            </div>
+        </section>
+
+        <section class="metricas"></section>
+
         <footer></footer>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
