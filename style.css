@@ -20,13 +20,21 @@
 
 .side-bar {
     background: white;
-    width: 17%;
-    min-width: 150px;
-    height: 82%; 
+    width: 15%;
+    min-width: 160px;
+    height: 100%; 
     border-right: 1px solid rgba(0, 0, 0, 0.185);
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 50px;
+}
+
+.brand-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
 }
 
 .logo {
@@ -36,23 +44,33 @@
     padding-top: 15px;
 }
 
+.descricao {
+    align-self: center;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(0, 0, 0, 0.178);
+    padding: 10px;
+}
+
 .button-list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 45px;
+    max-height: 100%;
+    max-width: 100%;
+    gap: 35px;
 }
 
 .btn-filtro {
     background: none;
     border: none;
-    font-size: 15pt;
     cursor: pointer;
-    padding-left: 50px;
+    padding-left: 10%;
+    text-align: left;
+    font-size: 1.2em;
 }
 
 .conteudo-direita {
-    width: 83%;
+    width: 85%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -62,6 +80,18 @@ header {
     background: white;
     width: 100%;
     height: 7%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.sobre {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.178);
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .main {
