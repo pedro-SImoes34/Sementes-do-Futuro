@@ -57,12 +57,15 @@
     align-items: flex-start;
     max-height: 100%;
     max-width: 100%;
-    gap: 30px;
+    gap: 10px;
 }
 
 .btn-filtro {
-    background: none;
-    border: none;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    border-color: transparent;
+    border-radius: 10px;
     cursor: pointer;
     padding-left: 10%;
     text-align: left;
@@ -87,8 +90,12 @@ header {
     align-items: center;
 }
 
+button:hover {
+    filter: brightness(0.95);
+}
+
 .sobre {
-    background: none;
+    background: white;
     border: 1px solid rgba(0, 0, 0, 0.178);
     padding: 10px;
     border-radius: 10px;

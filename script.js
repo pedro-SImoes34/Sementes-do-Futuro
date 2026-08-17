@@ -21,7 +21,7 @@ const pontosSustentaveis = [ //ponto teste para criação de pin no mapa
 const marcadoresNoMapa = []
 
 const caminhosPin = {
-    Arborizacao: "assets/pinGreen.svg"
+    Arborizacao: "assets/svg-icon/pinGreen.svg"
 }
 
 pontosSustentaveis.forEach(ponto => {
@@ -40,7 +40,7 @@ pontosSustentaveis.forEach(ponto => {
     <div class="popup-card tema-${ponto.categoria}">
       <img src="${ponto.imagem}" alt="${ponto.nome}" style="width:100%; height: 100px; object-fit: cover; border-radius: 6px;">
       <h3 class="titulo-popup" style="margin: 8px 0 4px;">${ponto.nome} <span class="tag-categoria">${ponto.categoria}</span></h3> 
-      <p style="font-size: 12px; color: #555; margin: 6px 0;"> <img src="assets/location-icon.svg" alt="icone de localização"> <strong>${ponto.bairro}, Vitória da Conquista - BA</strong></p>
+      <p style="font-size: 12px; color: #555; margin: 6px 0;"> <img src="assets/svg-icon/location-icon.svg" alt="icone de localização"> <strong>${ponto.bairro}, Vitória da Conquista - BA</strong></p>
       <p style="font-size: 13px;">${ponto.descricao}</p>
       <p style="font-size: 13px;"><strong>Benefícios:</strong> ${ponto.beneficios} </p>
       <button style="width:100%; background:#2e7d32; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer;">Quero participar</button>
