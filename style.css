@@ -24,10 +24,12 @@
     min-width: 160px;
     height: 100%; 
     border-right: 1px solid rgba(0, 0, 0, 0.185);
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.151);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
 }
 
 .brand-header {
@@ -38,10 +40,10 @@
 }
 
 .logo {
-    width: 65%;
-    min-width: 120px;
+    width: 35%;
+    min-width: 50px;
     align-self: center;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .descricao {
@@ -57,7 +59,7 @@
     align-items: flex-start;
     max-height: 100%;
     max-width: 100%;
-    gap: 10px;
+    gap: 7px;
 }
 
 .btn-filtro {
@@ -85,21 +87,45 @@ header {
     background: white;
     width: 100%;
     height: 7%;
+    padding: 15px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 25px;
+}
+
+.buscar {
+    width: 30%;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.164);
+}
+
+header > a {
+    width: 6%;
+    text-decoration: none;
+    font-size: 0.94em;
+    text-align: center;
+    color: white;
+    background: #0C482C;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 button:hover {
     filter: brightness(0.95);
 }
 
+a:hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.11));
+}   
+
 .sobre {
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.178);
     padding: 10px;
     border-radius: 10px;
-    margin-right: 10px;
     cursor: pointer;
 }
 
@@ -136,6 +162,24 @@ button:hover {
     background: rgba(144, 238, 144, 0.288);
     width: 100%;
     height: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.n-metrics {
+    background: #f5fcec;
+    width: 13%;
+    height: 80%;
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    gap: 15px;
+}
+
+.icons-metrics {
+    width: 15%;
 }
 
 footer {
