@@ -158,6 +158,16 @@ a:hover {
     color: green;
 }
 
+.tema-Reciclagem .tag-categoria{
+    background: rgba(144, 238, 144, 0.37);
+    color: green;
+}
+
+.tema-Eletronicos .tag-categoria {
+    background: rgba(92, 62, 223, 0.37);
+    color: rgb(83, 44, 224);
+}
+
 .metricas {
     background: rgba(144, 238, 144, 0.288);
     width: 100%;
