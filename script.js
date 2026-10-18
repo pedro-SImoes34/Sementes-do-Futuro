@@ -185,3 +185,29 @@ function atualizarMetricas() {
 }
 
 atualizarMetricas()
+
+const modalSobre = document.getElementById('modal-sobre')
+const botaoSobre = document.getElementById('botao-sobre')
+const botaoFechar = document.getElementById('fechar-modal')
+
+botaoSobre.addEventListener('click', () => {
+    modalSobre.classList.add('aberto')
+})
+
+botaoFechar.addEventListener('click', () => {
+    modalSobre.classList.remove('aberto')
+})
+
+// fecha ao clicar na área escura (fora da janela)
+modalSobre.addEventListener('click', (evento) => {
+    if (evento.target === modalSobre) {
+        modalSobre.classList.remove('aberto')
+    }
+})
+
+// fecha ao apertar a tecla Esc
+document.addEventListener('keydown', (evento) => {
+    if (evento.key === 'Escape') {
+        modalSobre.classList.remove('aberto')
+    }
+})

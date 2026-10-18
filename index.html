@@ -36,7 +36,7 @@
                 <header>
                     <input class="buscar" type="text" placeholder="Buscar endereço ou bairro...">
                     <a href="/" target="_blank">Contribuir</a> <!--link para forms (ajuda da comunidade)-->
-                    <button class="sobre">Sobre o projeto</button>
+                    <button id="botao-sobre" class="sobre">Sobre o projeto</button>
                 </header>
                 <main class="main">
                     <div id="map"></div>
@@ -57,6 +57,16 @@
             <p class="footer-text">Participe! Plante, cuide e compartilhe.</p>
             <img class="icon-footer" src="assets/svg-icon/plant-icon-footer.svg" alt="">
         </footer>
+    </div>
+
+    <div id="modal-sobre" class="modal-fundo">
+        <div class="modal-janela">
+            <button id="fechar-modal" class="modal-fechar">&times;</button>
+            <h2>Sobre o EcoMapa</h2>
+            <p><br>Esse projeto nasceu com um propósito simples: aproximar a população de Vitória da Conquista à informações claras e de fácil acesso sobre o cuidado com o meio ambiente da nossa cidade.</p>
+            <p><br>Aqui você encontra um mapa com ecopontos, pontos de arborização, pontos de reciclagem de materiais em geral e pontos específicos para a coleta de eletrônicos. E o mapa está sempre crescendo: novos pontos serão adicionados com o tempo.</p>
+            <p><br>Muitos desses espaços já existem, mas ainda são pouco conhecidos. Quando mais gente sabe onde descartar corretamente e onde participar, menos lixo vai parar em terrenos baldios, ruas e córregos, e mais verde, limpa e saudável a cidade fica.</p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
