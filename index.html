@@ -26,35 +26,30 @@
                     <p class="descricao">Mapa verde de <br> <strong>Vitória da Conquista</strong></p>
                 </div>
                 <div class="button-list">
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/map.svg" alt="Ícone de filtro geral">Todos os pontos</button>
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/oil-icon-sidebar.svg" alt="ícon de filtro óleo"> Coleta de óleo</button>
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/recycle.svg" alt="Ícone de filtro reciclagem">Reciclagem</button>
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/icon-electronic-sidebar.svg" alt="ícone de filtro eletrônicos"> Eletrônicos</button>
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/plant-icon-sidebar.svg" alt="ícone de filtro hortas"> Hortas comunitárias</button>
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/project-icon-sidebar.svg" alt="ícone de filtro projetos "> Projetos sustentáveis</button>
-                    <button class="btn-filtro"><img class="icons "src="assets/svg-icon/tree.svg" alt="ícone de filtro árvores">Arborização</button>
-                    <button class="btn-filtro"> <img class="icons" src="assets/svg-icon/seed-icon-sidebar.svg" alt="ícone de filtro sementes"> Banco de sementes</button>
+                    <button class="btn-filtro" data-categoria="todos"> <img class="icons" src="assets/svg-icon/map.svg" alt="Ícone de filtro geral">Todos os pontos</button>
+                    <button class="btn-filtro" data-categoria="Reciclagem"> <img class="icons" src="assets/svg-icon/recycle.svg" alt="Ícone de filtro reciclagem">Reciclagem</button>
+                    <button class="btn-filtro" data-categoria="Eletronicos"> <img class="icons" src="assets/svg-icon/icon-electronic-sidebar.svg" alt="ícone de filtro eletrônicos"> Eletrônicos</button>
+                    <button class="btn-filtro" data-categoria="Arborizacao"><img class="icons "src="assets/svg-icon/tree.svg" alt="ícone de filtro árvores">Arborização</button>
                 </div>
             </aside>
             <div class="conteudo-direita">
                 <header>
-                    <input class="buscar" type="text" placeholder="Buscar endereço ou bairro...">
+                    <input class="buscar" type="search" aria-label="Buscar ponto" placeholder="Buscar por bairro ou nome do ponto...">
                     <a href="/" target="_blank">Contribuir</a> <!--link para forms (ajuda da comunidade)-->
-                    <button class="sobre">Sobre o projeto</button>
+                    <button id="botao-sobre" class="sobre">Sobre o projeto</button>
                 </header>
                 <main class="main">
                     <div id="map"></div>
+                    <div id="aviso-busca" class="aviso-busca" hidden></div>
                 </main>
             </div>
         </section>
 
         <section class="metricas">
-            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/plant-icon-footer.svg" alt="Ícone de folha"><p>Pontos de coleta</p></div>
-            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/oil-icon-sidebar.svg" alt="ícone de gota de óleo"><p>Coleta de óleo</p></div>
-            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/icon-electronic-sidebar.svg" alt="Ícone de eletrônicos"><p>Eletrônicos</p></div>
-            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/plant-icon-sidebar.svg" alt="Ícone de planta"><p>Hortas Comunitárias</p></div>
-            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/tree.svg" alt="Ícone de árvore"><p>Árvores plantadas</p></div>
-            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/project-icon-sidebar.svg" alt="Ícone de projetos"><p>Projetos ativos</p></div>
+            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/map.svg" alt="Ícone de folha"><div><p>Total de pontos</p> <p class="num-metrics" id="contador-total">1</p></div></div>
+            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/recycle.svg" alt="Ícone de folha"><div><p>Pontos de reciclagem</p> <p class="num-metrics" id="contador-Reciclagem">1</p></div></div>
+            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/icon-electronic-sidebar.svg" alt="Ícone de eletrônicos"><div> <p>Eletrônicos</p> <p class="num-metrics" id="contador-Eletronicos">1</p></div></div>
+            <div class="n-metrics"><img class="icons-metrics" src="assets/svg-icon/tree.svg" alt="Ícone de árvore"><div> <p>Pontos de arborização</p> <p class="num-metrics" id="contador-Arborizacao">1</p></div></div>
         </section>
 
         <footer>
@@ -63,6 +58,16 @@
             <p class="footer-text">Participe! Plante, cuide e compartilhe.</p>
             <img class="icon-footer" src="assets/svg-icon/plant-icon-footer.svg" alt="">
         </footer>
+    </div>
+
+    <div id="modal-sobre" class="modal-fundo">
+        <div class="modal-janela">
+            <button id="fechar-modal" class="modal-fechar">&times;</button>
+            <h2>Sobre o EcoMapa</h2>
+            <p><br>Esse projeto nasceu com um propósito simples: aproximar a população de Vitória da Conquista à informações claras e de fácil acesso sobre o cuidado com o meio ambiente da nossa cidade.</p>
+            <p><br>Aqui você encontra um mapa com ecopontos, pontos de arborização, pontos de reciclagem de materiais em geral e pontos específicos para a coleta de eletrônicos. E o mapa está sempre crescendo: novos pontos serão adicionados com o tempo.</p>
+            <p><br>Muitos desses espaços já existem, mas ainda são pouco conhecidos. Quando mais gente sabe onde descartar corretamente e onde participar, menos lixo vai parar em terrenos baldios, ruas e córregos, e mais verde, limpa e saudável a cidade fica.</p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
