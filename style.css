@@ -188,6 +188,13 @@ a:hover {
     gap: 15px;
 }
 
+.num-metrics {
+    font-size: 1.7em;
+    color: #0C482C;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .icons-metrics {
     width: 15%;
 }

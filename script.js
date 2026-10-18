@@ -144,3 +144,44 @@ pontosSustentaveis.forEach(ponto => {
     marcadoresNoMapa.push(marcador)
 })
 
+const botoesFiltro = document.querySelectorAll('.btn-filtro')
+
+botoesFiltro.forEach(botao => {
+    botao.addEventListener('click', () => {
+        const categoriaEscolhida = botao.dataset.categoria
+
+        marcadoresNoMapa.forEach(marcador => {
+            if (categoriaEscolhida === 'todos' || marcador.categoria === categoriaEscolhida) {
+                marcador.addTo(map)
+            } else {
+                marcador.remove()
+            }
+        })
+
+        map.closePopup()
+
+        botoesFiltro.forEach(b => b.classList.remove('ativo'))
+        botao.classList.add('ativo')
+    })
+})
+
+function atualizarMetricas() {
+    // zera todos os contadores
+    const contadores = document.querySelectorAll('.num-metrics')
+    contadores.forEach(contador => {
+        contador.textContent = 0
+    })
+
+    // soma 1 no contador de cada ponto
+    pontosSustentaveis.forEach(ponto => {
+        const contador = document.getElementById('contador-' + ponto.categoria)
+        if (contador) {
+            contador.textContent = Number(contador.textContent) + 1
+        }
+    })
+
+    // total geral
+    document.getElementById('contador-total').textContent = pontosSustentaveis.length
+}
+
+atualizarMetricas()
