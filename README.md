@@ -41,10 +41,6 @@ Muitos desses locais já existem, mas ainda são pouco conhecidos. Quanto mais g
     └── svg-icon/   # ícones dos filtros, marcadores e rodapé
 ```
 
-### Testando no celular
-
-Com o computador e o celular na mesma rede Wi-Fi, rode o servidor local e acesse no celular `http://IP-DO-SEU-COMPUTADOR:8000`.
-
 ## 📍 Como adicionar um novo ponto
 
 Os pontos ficam na lista `pontosSustentaveis`, no início do `script.js`. Para cadastrar um novo, adicione um objeto à lista:
