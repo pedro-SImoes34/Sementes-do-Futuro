@@ -6,16 +6,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map); // 
 
 const pontosSustentaveis = [ //ponto teste para criação de pin no mapa
-    {
-    nome: "Praça Tancredo Neves",
-    categoria: "Arborizacao",
-    lat: -14.8500,
-    lng: -40.8382,
-    bairro: "Centro",
-    descricao: "Área pública com potencial para plantio de árvores nativas.",
-    beneficios: "Mais sombra, redução da temperatura e melhora da qualidade do ar.",
-    link: "https://maps.app.goo.gl/bgM5As1fzdvXo5VQ6"    
-    },
 
     {
     nome: "Recicla Conquista",
@@ -109,7 +99,6 @@ const pontosSustentaveis = [ //ponto teste para criação de pin no mapa
 const marcadoresNoMapa = []
 
 const caminhosPin = {
-    Arborizacao: "assets/svg-icon/tree.svg",
     Reciclagem: "assets/svg-icon/recycle.svg",
     Eletronicos: "assets/svg-icon/icon-electronic-sidebar.svg"
 }
