@@ -226,6 +226,25 @@ campoBusca.addEventListener('keydown', (evento) => {
     }
 })
 
+function atualizarMetricas() {
+    // zera todos os contadores
+    const contadores = document.querySelectorAll('.numero-metrica')
+    contadores.forEach(contador => {
+        contador.textContent = 0
+    })
+
+    // soma 1 no contador de cada ponto
+    pontosSustentaveis.forEach(ponto => {
+        const contador = document.getElementById('contador-' + ponto.categoria)
+        if (contador) {
+            contador.textContent = Number(contador.textContent) + 1
+        }
+    })
+
+    // total geral
+    document.getElementById('contador-total').textContent = pontosSustentaveis.length
+}
+
 atualizarMetricas()
 
 const modalSobre = document.getElementById('modal-sobre')
