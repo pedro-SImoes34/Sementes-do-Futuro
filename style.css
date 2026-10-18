@@ -148,6 +148,27 @@ a:hover {
     min-height: 0;
     width: 100%;
     display: flex;
+    position: relative;
+}
+
+.aviso-busca {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 90%;
+    background: white;
+    color: #0C482C;
+    font-size: 0.9em;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.aviso-busca[hidden] {
+    display: none;
 }
 
 #map {

@@ -55,7 +55,7 @@ const pontosSustentaveis = [ //ponto teste para criação de pin no mapa
     categoria: "Eletronicos",
     lat: -14.8938,
     lng: -40.8395,
-    bairro: "Centro",
+    bairro: "Boa Vista",
     descricao: "Empresa especializada na compra e reciclagem de placas eletrônicas em grande volume (mínimo de 100 kg para retirada/compra).",
     beneficios: "Destinação adequada para resíduos eletrônicos em escala, valorização de sucata tecnológica e incentivo à economia circular.",
     link: "https://maps.app.goo.gl/G4AK7Q2zRTyKvvE6A"    
@@ -114,6 +114,10 @@ const caminhosPin = {
     Eletronicos: "assets/svg-icon/icon-electronic-sidebar.svg"
 }
 
+function normalizar(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+}
+
 pontosSustentaveis.forEach(ponto => {
 
     const caminhoSvg = caminhosPin[ponto.categoria]
@@ -143,49 +147,84 @@ pontosSustentaveis.forEach(ponto => {
         autoPanPadding: [20, 20]
     })
     marcador.categoria = ponto.categoria
+    marcador.textoBusca = normalizar(ponto.nome + ' ' + ponto.bairro)
     marcador.addTo(map)
     marcadoresNoMapa.push(marcador)
 })
 
 const botoesFiltro = document.querySelectorAll('.btn-filtro')
+const campoBusca = document.querySelector('.buscar')
+const avisoBusca = document.getElementById('aviso-busca')
+
+let categoriaAtual = 'todos'
+let termoAtual = ''
+
+// mostra só os pontos que combinam com a categoria escolhida E com o texto buscado
+function aplicarFiltros(moverMapa) {
+    const visiveis = []
+
+    marcadoresNoMapa.forEach(marcador => {
+        const bateCategoria = categoriaAtual === 'todos' || marcador.categoria === categoriaAtual
+        const bateBusca = termoAtual === '' || marcador.textoBusca.includes(termoAtual)
+
+        if (bateCategoria && bateBusca) {
+            marcador.addTo(map)
+            visiveis.push(marcador)
+        } else {
+            marcador.remove()
+        }
+    })
+
+    map.closePopup()
+
+    // aviso quando nada é encontrado
+    if (termoAtual !== '' && visiveis.length === 0) {
+        avisoBusca.textContent = 'Nenhum ponto encontrado para "' + campoBusca.value.trim() + '".'
+        avisoBusca.hidden = false
+    } else {
+        avisoBusca.hidden = true
+    }
+
+    // leva o mapa até os resultados
+    if (moverMapa && termoAtual !== '' && visiveis.length > 0) {
+        if (visiveis.length === 1) {
+            map.setView(visiveis[0].getLatLng(), 16)
+            visiveis[0].openPopup()
+        } else {
+            map.fitBounds(L.featureGroup(visiveis).getBounds(), { padding: [50, 50], maxZoom: 16 })
+        }
+    }
+}
 
 botoesFiltro.forEach(botao => {
     botao.addEventListener('click', () => {
-        const categoriaEscolhida = botao.dataset.categoria
-
-        marcadoresNoMapa.forEach(marcador => {
-            if (categoriaEscolhida === 'todos' || marcador.categoria === categoriaEscolhida) {
-                marcador.addTo(map)
-            } else {
-                marcador.remove()
-            }
-        })
-
-        map.closePopup()
+        categoriaAtual = botao.dataset.categoria
+        aplicarFiltros(true)
 
         botoesFiltro.forEach(b => b.classList.remove('ativo'))
         botao.classList.add('ativo')
     })
 })
 
-function atualizarMetricas() {
-    // zera todos os contadores
-    const contadores = document.querySelectorAll('.num-metrics')
-    contadores.forEach(contador => {
-        contador.textContent = 0
-    })
+// busca: filtra enquanto a pessoa digita (com uma pequena pausa para não "pular" o mapa)
+let esperaBusca
+campoBusca.addEventListener('input', () => {
+    clearTimeout(esperaBusca)
+    esperaBusca = setTimeout(() => {
+        termoAtual = normalizar(campoBusca.value)
+        aplicarFiltros(true)
+    }, 300)
+})
 
-    // soma 1 no contador de cada ponto
-    pontosSustentaveis.forEach(ponto => {
-        const contador = document.getElementById('contador-' + ponto.categoria)
-        if (contador) {
-            contador.textContent = Number(contador.textContent) + 1
-        }
-    })
-
-    // total geral
-    document.getElementById('contador-total').textContent = pontosSustentaveis.length
-}
+// Enter aplica na hora e fecha o teclado do celular
+campoBusca.addEventListener('keydown', (evento) => {
+    if (evento.key === 'Enter') {
+        clearTimeout(esperaBusca)
+        termoAtual = normalizar(campoBusca.value)
+        aplicarFiltros(true)
+        campoBusca.blur()
+    }
+})
 
 atualizarMetricas()
 
