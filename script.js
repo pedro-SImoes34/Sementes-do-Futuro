@@ -135,9 +135,12 @@ pontosSustentaveis.forEach(ponto => {
       <a href = "${ponto.link}" target="_blank" style="display:block; text-align:center; width:100%; background:#2e7d32; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer;">Quero participar</a>
     </div>`
 
+    // o popup se adapta à largura da tela (importante em celulares)
+    const larguraTela = window.innerWidth
     marcador.bindPopup(popupConteudo, {
-        minWidth: 280,
-        maxWidth: 350,
+        minWidth: Math.min(280, larguraTela - 90),
+        maxWidth: Math.min(350, larguraTela - 60),
+        autoPanPadding: [20, 20]
     })
     marcador.categoria = ponto.categoria
     marcador.addTo(map)
@@ -211,3 +214,11 @@ document.addEventListener('keydown', (evento) => {
         modalSobre.classList.remove('aberto')
     }
 })
+
+// recalcula o tamanho do mapa ao girar o celular ou redimensionar a janela
+function ajustarMapa() {
+    setTimeout(() => map.invalidateSize(), 200)
+}
+
+window.addEventListener('resize', ajustarMapa)
+window.addEventListener('orientationchange', ajustarMapa)
