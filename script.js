@@ -128,7 +128,6 @@ pontosSustentaveis.forEach(ponto => {
       <a href = "${ponto.link}" target="_blank" style="display:block; text-align:center; width:100%; background:#2e7d32; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer;">Quero participar</a>
     </div>`
 
-    // o popup se adapta à largura da tela (importante em celulares)
     const larguraTela = window.innerWidth
     marcador.bindPopup(popupConteudo, {
         minWidth: Math.min(280, larguraTela - 90),
@@ -148,7 +147,6 @@ const avisoBusca = document.getElementById('aviso-busca')
 let categoriaAtual = 'todos'
 let termoAtual = ''
 
-// mostra só os pontos que combinam com a categoria escolhida E com o texto buscado
 function aplicarFiltros(moverMapa) {
     const visiveis = []
 
@@ -166,7 +164,6 @@ function aplicarFiltros(moverMapa) {
 
     map.closePopup()
 
-    // aviso quando nada é encontrado
     if (termoAtual !== '' && visiveis.length === 0) {
         avisoBusca.textContent = 'Nenhum ponto encontrado para "' + campoBusca.value.trim() + '".'
         avisoBusca.hidden = false
@@ -174,7 +171,6 @@ function aplicarFiltros(moverMapa) {
         avisoBusca.hidden = true
     }
 
-    // leva o mapa até os resultados
     if (moverMapa && termoAtual !== '' && visiveis.length > 0) {
         if (visiveis.length === 1) {
             map.setView(visiveis[0].getLatLng(), 16)
@@ -195,7 +191,6 @@ botoesFiltro.forEach(botao => {
     })
 })
 
-// busca: filtra enquanto a pessoa digita (com uma pequena pausa para não "pular" o mapa)
 let esperaBusca
 campoBusca.addEventListener('input', () => {
     clearTimeout(esperaBusca)
@@ -205,7 +200,6 @@ campoBusca.addEventListener('input', () => {
     }, 300)
 })
 
-// Enter aplica na hora e fecha o teclado do celular
 campoBusca.addEventListener('keydown', (evento) => {
     if (evento.key === 'Enter') {
         clearTimeout(esperaBusca)
@@ -216,13 +210,11 @@ campoBusca.addEventListener('keydown', (evento) => {
 })
 
 function atualizarMetricas() {
-    // zera todos os contadores
     const contadores = document.querySelectorAll('.numero-metrica')
     contadores.forEach(contador => {
         contador.textContent = 0
     })
 
-    // soma 1 no contador de cada ponto
     pontosSustentaveis.forEach(ponto => {
         const contador = document.getElementById('contador-' + ponto.categoria)
         if (contador) {
@@ -230,7 +222,6 @@ function atualizarMetricas() {
         }
     })
 
-    // total geral
     document.getElementById('contador-total').textContent = pontosSustentaveis.length
 }
 
@@ -248,21 +239,18 @@ botaoFechar.addEventListener('click', () => {
     modalSobre.classList.remove('aberto')
 })
 
-// fecha ao clicar na área escura (fora da janela)
 modalSobre.addEventListener('click', (evento) => {
     if (evento.target === modalSobre) {
         modalSobre.classList.remove('aberto')
     }
 })
 
-// fecha ao apertar a tecla Esc
 document.addEventListener('keydown', (evento) => {
     if (evento.key === 'Escape') {
         modalSobre.classList.remove('aberto')
     }
 })
 
-// recalcula o tamanho do mapa ao girar o celular ou redimensionar a janela
 function ajustarMapa() {
     setTimeout(() => map.invalidateSize(), 200)
 }
